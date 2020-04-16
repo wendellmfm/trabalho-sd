@@ -13,30 +13,32 @@ import java.net.Socket;
 public class CalculadoraSocket extends AsyncTask<Void, Void, String> {
 
     TextView tv;
-    String oper1,oper2;
+    String oper1,oper2, operacao;
     PrecisaCalcular pc;
-    public CalculadoraSocket(TextView tv, String oper1, String oper2){
+    public CalculadoraSocket(TextView tv, String oper1, String oper2, String operacao){
         this.tv=tv;
         this.oper1=oper1;
         this.oper2=oper2;
+        this.operacao=operacao;
 
     }
-    public CalculadoraSocket(PrecisaCalcular pc, String oper1, String oper2){
+    public CalculadoraSocket(PrecisaCalcular pc, String oper1, String oper2, String operacao){
         this.tv=tv;
         this.oper1=oper1;
         this.oper2=oper2;
         this.pc=pc;
+        this.operacao=operacao;
 
     }
     @Override
     protected String doInBackground(Void... voids) {
         String result="";
         //double oper1=10,oper2=20;
-        int operacao=1; //1-somar 2-subtrair 3-dividir 4-multiplicar
+        //int operacao=1; //1-somar 2-subtrair 3-dividir 4-multiplicar
         try {
 
             //Conexão com o Servidor
-            Socket clientSocket = new Socket("192.168.0.11", 9090);
+            Socket clientSocket = new Socket("192.168.15.14", 9090);
             DataOutputStream socketSaidaServer = new DataOutputStream(clientSocket.getOutputStream());
 
             //Enviando os dados

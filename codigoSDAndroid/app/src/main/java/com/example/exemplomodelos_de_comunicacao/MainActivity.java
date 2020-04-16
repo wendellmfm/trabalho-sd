@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                PrecisaCalcular shc = new PrecisaCalcular(tv);
-               //shc.calculoRemoto();
-                //shc.calculoLocal()
-                shc.calculoRemotoHTTP();
+               shc.calculoRemoto();
+                //shc.calculoLocal();
+                //shc.calculoRemotoHTTP();
 
             }
 
