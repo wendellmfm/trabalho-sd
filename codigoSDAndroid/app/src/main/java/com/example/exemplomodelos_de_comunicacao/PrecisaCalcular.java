@@ -7,11 +7,11 @@ public class PrecisaCalcular {
     public PrecisaCalcular(TextView tv){
         this.tv=tv;
     }
-    public String calculoLocal(){
-        Calculadora calc = new Calculadora();
-        String result= calc.soma(20.0,20.0)+"";
-        return result;
-    }
+//    public String calculoLocal(){
+//        Calculadora calc = new Calculadora();
+//        String result= calc.soma(20.0,20.0)+"";
+//        return result;
+//    }
 
     public void calculoRemoto(){
         CalculadoraSocket shs = new CalculadoraSocket(this, "15", "15", "3");
@@ -20,6 +20,12 @@ public class PrecisaCalcular {
     }
     public void calculoRemotoHTTP(){
         CalculadoraHttpPOST shs = new CalculadoraHttpPOST(this, "15", "15", "1");
+        shs.execute();
+
+    }
+
+    public void calculoRemotoLipeRMI(){
+        CalculadoraLipeRMI shs = new CalculadoraLipeRMI(this, "15", "15", "1");
         shs.execute();
 
     }

@@ -1,22 +1,29 @@
 package com.example.exemplomodelos_de_comunicacao;
 
-public class Calculadora {
-    public String sayHello(String nome, String sobrenome) {
-        return "Fala "+ nome + " " + sobrenome;
-    }
-    public double soma(double oper1, double oper2) {
-        return oper1 + oper2;
+public class Calculadora  implements ICalculadora {
+
+    private static final long serialVersionUID = 1L;
+
+    private static int chamadas = 0;
+
+    public double soma(double a, double b) {
+        //System.out.println("Método soma chamado " + chamadas++);
+        return a + b;
     }
 
-    public double subtracao(double oper1, double oper2) {
-        return oper1 + oper2;
+    public double subtracao(double a, double b) {
+        //System.out.println("Método soma chamado " + chamadas++);
+        return a - b;
     }
 
-    public double multiplicacao(double oper1, double oper2) {
-        return oper1 + oper2;
+    public double multiplicacao(double a, double b) {
+        //System.out.println("Método soma chamado " + chamadas++);
+        return a * b;
     }
 
-    public double divisao(double oper1, double oper2) {
-        return oper1 + oper2;
+    public double divisao(double a, double b) {
+        //System.out.println("Método soma chamado " + chamadas++);
+        return a / b;
     }
+
 }

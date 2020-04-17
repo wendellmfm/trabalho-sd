@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import net.sf.lipermi.handler.CallHandler;
+import net.sf.lipermi.net.Client;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView tv;
@@ -15,15 +20,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button bt = findViewById(R.id.button);
-        tv= findViewById(R.id.textView);
+        tv = findViewById(R.id.textView);
         bt.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                PrecisaCalcular shc = new PrecisaCalcular(tv);
-               shc.calculoRemoto();
+               //shc.calculoRemoto();
                 //shc.calculoLocal();
                 //shc.calculoRemotoHTTP();
+                shc.calculoRemotoLipeRMI();
 
             }
 
