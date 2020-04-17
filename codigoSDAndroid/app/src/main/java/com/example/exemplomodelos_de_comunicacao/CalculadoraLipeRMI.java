@@ -42,7 +42,24 @@ public class CalculadoraLipeRMI extends AsyncTask<Void, Void, String> {
             client = new Client(remoteHost, portWasBinded, callHandler);
 
             ICalculadora remoteObject = (ICalculadora) client.getGlobal(ICalculadora.class);
-            result = remoteObject.soma(8,2);
+
+            switch (Integer.parseInt(operacao)) {
+                case 1:
+                    result = remoteObject.soma(Double.parseDouble(oper1), Double.parseDouble(oper2));
+                    break;
+                case 2:
+                    result = remoteObject.subtracao(Double.parseDouble(oper1), Double.parseDouble(oper2));
+                    break;
+                case 3:
+                    result = remoteObject.multiplicacao(Double.parseDouble(oper1), Double.parseDouble(oper2));
+                    break;
+                case 4:
+                    result = remoteObject.divisao(Double.parseDouble(oper1), Double.parseDouble(oper2));
+                    break;
+
+                default:
+                    break;
+            }
 
         } catch (IOException e) {
             // TODO Auto-generated catch block

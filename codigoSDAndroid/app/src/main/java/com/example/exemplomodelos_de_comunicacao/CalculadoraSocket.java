@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,6 +14,7 @@ public class CalculadoraSocket extends AsyncTask<Void, Void, String> {
     TextView tv;
     String oper1,oper2, operacao;
     PrecisaCalcular pc;
+
     public CalculadoraSocket(TextView tv, String oper1, String oper2, String operacao){
         this.tv=tv;
         this.oper1=oper1;
@@ -38,7 +38,7 @@ public class CalculadoraSocket extends AsyncTask<Void, Void, String> {
         try {
 
             //Conexão com o Servidor
-            Socket clientSocket = new Socket("192.168.15.14", 9090);
+            Socket clientSocket = new Socket("192.168.15.11", 9090);
             DataOutputStream socketSaidaServer = new DataOutputStream(clientSocket.getOutputStream());
 
             //Enviando os dados

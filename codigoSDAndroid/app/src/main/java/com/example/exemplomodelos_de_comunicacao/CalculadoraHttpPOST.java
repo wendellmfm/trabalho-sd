@@ -5,16 +5,11 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -28,10 +23,9 @@ public class CalculadoraHttpPOST extends AsyncTask<Void, Void, String> {
         this.oper1=oper1;
         this.oper2=oper2;
         this.operacao=operacao;
-
     }
+
     public CalculadoraHttpPOST(PrecisaCalcular pc, String oper1, String oper2, String operacao){
-        this.tv=tv;
         this.oper1=oper1;
         this.oper2=oper2;
         this.pc=pc;
@@ -64,8 +58,6 @@ public class CalculadoraHttpPOST extends AsyncTask<Void, Void, String> {
             if (responseCode == HttpsURLConnection.HTTP_OK) {
 
                 //RECBIMENTO DOS PARAMETROS
-
-
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(conn.getInputStream(), "utf-8"));
                 StringBuilder response = new StringBuilder();

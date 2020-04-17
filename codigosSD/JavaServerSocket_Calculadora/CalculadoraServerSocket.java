@@ -38,16 +38,16 @@ public class CalculadoraServerSocket {
                //Chamando a calculadora
                switch (Integer.parseInt(operacao)) {
 					case 1:
-						result = "Resultado da soma: " + calc.soma(Double.parseDouble(oper1), Double.parseDouble(oper2));
+						result = String.valueOf(calc.soma(Double.parseDouble(oper1), Double.parseDouble(oper2)));
 						break;
 					case 2:
-						result = "Resultado da subtracao: " + calc.subtracao(Double.parseDouble(oper1), Double.parseDouble(oper2));
+						result = String.valueOf(calc.subtracao(Double.parseDouble(oper1), Double.parseDouble(oper2)));
 						break;
 					case 3:
-						result = "Resultado da divisão: " + calc.divisao(Double.parseDouble(oper1), Double.parseDouble(oper2));
+						result = String.valueOf(calc.multiplicacao(Double.parseDouble(oper1), Double.parseDouble(oper2)));
 						break;
 					case 4:
-						result = "Resultado da multiplicação: " + calc.multiplicacao(Double.parseDouble(oper1), Double.parseDouble(oper2));
+						result = String.valueOf(calc.divisao(Double.parseDouble(oper1), Double.parseDouble(oper2)));
 						break;
 
 				default:
