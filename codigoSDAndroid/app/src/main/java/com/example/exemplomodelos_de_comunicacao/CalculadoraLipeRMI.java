@@ -32,28 +32,40 @@ public class CalculadoraLipeRMI extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
+        //objeto responsavel por gerenciar todas as instancias de objetos locais exporatadas
+        // e remotas.
         CallHandler callHandler = new CallHandler();
+        //endereco ip do host remoto.
         String remoteHost = "192.168.15.11";
+        //porta usada para a conexao.
         int portWasBinded = 4455;
 
+        //objeto cliente LipeRMI usado na requisicao.
         Client client;
         double result = 0;
         try {
+            //inicializacao do cliente com os parametros definidos previamente.
             client = new Client(remoteHost, portWasBinded, callHandler);
 
+            //definicao da interface do objeto remoto.
             ICalculadora remoteObject = (ICalculadora) client.getGlobal(ICalculadora.class);
 
+            //escolha da operacao desejada (1=soma; 2=subtracao; 3=multiplicao; 4=divisao).
             switch (Integer.parseInt(operacao)) {
                 case 1:
+                    //chamada do metodo remoto de soma.
                     result = remoteObject.soma(Double.parseDouble(oper1), Double.parseDouble(oper2));
                     break;
                 case 2:
+                    //chamada do metodo remoto de subtracao.
                     result = remoteObject.subtracao(Double.parseDouble(oper1), Double.parseDouble(oper2));
                     break;
                 case 3:
+                    //chamada do metodo remoto de multiplicacao.
                     result = remoteObject.multiplicacao(Double.parseDouble(oper1), Double.parseDouble(oper2));
                     break;
                 case 4:
+                    //chamada do metodo remoto de divisao.
                     result = remoteObject.divisao(Double.parseDouble(oper1), Double.parseDouble(oper2));
                     break;
 
@@ -66,6 +78,7 @@ public class CalculadoraLipeRMI extends AsyncTask<Void, Void, String> {
             e.printStackTrace();
         }
 
+        //retorno da operacao desejada.
         return Double.toString(result);
     }
 

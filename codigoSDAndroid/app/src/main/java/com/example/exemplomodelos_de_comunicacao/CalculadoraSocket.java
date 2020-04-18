@@ -33,46 +33,49 @@ public class CalculadoraSocket extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... voids) {
         String result="";
-        //double oper1=10,oper2=20;
-        //int operacao=1; //1-somar 2-subtrair 3-dividir 4-multiplicar
         try {
 
-            //Conexão com o Servidor
+            //conexao com o servidor por meio do enderecp IP e porta.
             Socket clientSocket = new Socket("192.168.15.11", 9090);
+            // objeto para a escrita e envio de dados.
             DataOutputStream socketSaidaServer = new DataOutputStream(clientSocket.getOutputStream());
 
-            //Enviando os dados
+            //escrita dos dados para envio com os parametros informados, os dois valores para a
+            //operacao e a operacao desejada (1=soma; 2=subtracao; 3=multiplicao; 4=divisao).
             socketSaidaServer.writeBytes(operacao+"\n");
             socketSaidaServer.writeBytes(oper1+ "\n");
             socketSaidaServer.writeBytes( oper2+ "\n");
+            //enviando os dados.
             socketSaidaServer.flush();
 
-            //Recebendo a resposta
+            //recebendo a resposta.
+            //objeto que faz a leitura de caracteres a partir de um fluxo de bytes.
             BufferedReader messageFromServer = new BufferedReader
                     (new InputStreamReader(clientSocket.getInputStream()));
+            //armazenamento da resposta da requisicao.
             result=messageFromServer.readLine();
 
-          //  System.out.println("resultado="+result);
+            //fecha a conexao socket.
             clientSocket.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
+        //retorno da operacao desejada.
         return result;
         //Codigo
     }
 
 
     @Override
-protected void onPreExecute() {
+    protected void onPreExecute() {
         //Codigo
         }
 
 
-@Override
-protected void onPostExecute(String result) {
+    @Override
+    protected void onPostExecute(String result) {
         //Codigo
            if(this.tv!=null) {
                this.tv.setText(result);

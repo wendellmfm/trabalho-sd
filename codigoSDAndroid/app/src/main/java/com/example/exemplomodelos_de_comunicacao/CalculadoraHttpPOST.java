@@ -88,7 +88,7 @@ public class CalculadoraHttpPOST extends AsyncTask<Void, Void, String> {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                //armazenamento da resposta da requisição.
+                //armazenamento da resposta da requisicao.
                 result = response.toString();
             }
         } catch (IOException e) {
