@@ -32,7 +32,7 @@ public class CalculadoraLipeRMI extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        //objeto responsavel por gerenciar todas as instancias de objetos locais exporatadas
+        //objeto responsavel por gerenciar todas as instancias de objetos locais exportadas
         // e remotas.
         CallHandler callHandler = new CallHandler();
         //endereco ip do host remoto.
