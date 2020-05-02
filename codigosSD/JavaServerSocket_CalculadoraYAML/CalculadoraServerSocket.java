@@ -1,12 +1,12 @@
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
 
-import com.google.gson.Gson;
+import org.yaml.snakeyaml.Yaml;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
@@ -42,12 +42,19 @@ public class CalculadoraServerSocket {
 	           
 	           //interpretando dados do servidor.
 	           socketEntrada = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-	           // //recebimento do JSON com os parametros da expressao a ser calculada.
-               String json = socketEntrada.readLine();
-               //objeto GSON usado para converter o objeto Calculadora em JSON.
-               Gson gson = new Gson();
-               //converter o JSON em objeto Calculadora.
-               calculadora = gson.fromJson(json, Calculadora.class);
+	           
+	           //recebimento do YAML com os parametros da expressao a ser calculada.
+	           StringBuilder sbYamlInput = new StringBuilder();
+	           for(i = 0; i < 4; i++) {
+	        	   sbYamlInput.append(socketEntrada.readLine() + "\n");
+	           }	           
+	           String yamlString = sbYamlInput.toString();
+	           //objeto para a criacao do YAML.
+               Yaml yaml = new Yaml();
+               //mapa para armazenamento do objeto.
+               Map<String, Calculadora> map = (Map<String, Calculadora>) yaml.load(yamlString);
+               //atribuicao do objeto para o calculo da expressao. 
+               calculadora =  map.get("Calculo");
                
                //montagem da string da expressao a partir do objeto Calculadora.
                StringBuilder sbExpressao = new StringBuilder();

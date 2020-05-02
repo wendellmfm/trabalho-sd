@@ -36,7 +36,7 @@ public class CalculadoraSocket extends AsyncTask<Void, Void, String> {
         try {
 
             //conexao com o servidor por meio do enderecp IP e porta.
-            Socket clientSocket = new Socket("192.168.15.11", 9090);
+            Socket clientSocket = new Socket("192.168.15.13", 9090);
             // objeto para a escrita e envio de dados.
             DataOutputStream socketSaidaServer = new DataOutputStream(clientSocket.getOutputStream());
 

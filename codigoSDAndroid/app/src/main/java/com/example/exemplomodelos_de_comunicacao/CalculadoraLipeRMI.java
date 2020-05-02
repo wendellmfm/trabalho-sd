@@ -36,7 +36,7 @@ public class CalculadoraLipeRMI extends AsyncTask<Void, Void, String> {
         // e remotas.
         CallHandler callHandler = new CallHandler();
         //endereco ip do host remoto.
-        String remoteHost = "192.168.15.11";
+        String remoteHost = "192.168.15.13";
         //porta usada para a conexao.
         int portWasBinded = 4455;
 
