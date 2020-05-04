@@ -12,8 +12,8 @@ import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class CalculadoraServerSocket {
-
 	
+	private static final int MESSAGE_LINE_NUMBERS = 4;
 
 	public static void main(String[] args) {
 		
@@ -45,7 +45,7 @@ public class CalculadoraServerSocket {
 	           
 	           //recebimento do YAML com os parametros da expressao a ser calculada.
 	           StringBuilder sbYamlInput = new StringBuilder();
-	           for(i = 0; i < 4; i++) {
+	           for(i = 0; i < MESSAGE_LINE_NUMBERS; i++) {
 	        	   sbYamlInput.append(socketEntrada.readLine() + "\n");
 	           }	           
 	           String yamlString = sbYamlInput.toString();
